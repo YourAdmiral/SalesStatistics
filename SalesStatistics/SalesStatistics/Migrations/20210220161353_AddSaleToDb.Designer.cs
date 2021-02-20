@@ -10,7 +10,7 @@ using SalesStatistics.Models;
 namespace SalesStatistics.Migrations
 {
     [DbContext(typeof(SalesDbContext))]
-    [Migration("20210220130635_AddSaleToDb")]
+    [Migration("20210220161353_AddSaleToDb")]
     partial class AddSaleToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,8 +33,8 @@ namespace SalesStatistics.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<double>("Cost")
-                        .HasColumnType("float");
+                    b.Property<int>("Cost")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");

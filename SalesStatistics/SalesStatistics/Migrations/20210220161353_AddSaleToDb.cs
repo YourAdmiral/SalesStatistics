@@ -15,7 +15,7 @@ namespace SalesStatistics.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Product = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     Client = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
-                    Cost = table.Column<double>(type: "float", nullable: false),
+                    Cost = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

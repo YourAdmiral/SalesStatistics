@@ -16,7 +16,7 @@
                 <label asp-for="Product"></label>
             </div>
             <div class="col-6">
-                <input asp-for="Product" class="form-control" />
+                <input asp-for="Product" class="form-control" placeholder="Product name"/>
                 <span asp-validation-for="Product" class="text-danger"></span>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 <label asp-for="Client"></label>
             </div>
             <div class="col-6">
-                <input asp-for="Client" class="form-control" />
+                <input asp-for="Client" class="form-control" placeholder="Client name"/>
                 <span asp-validation-for="Client" class="text-danger"></span>
             </div>
         </div>
@@ -43,7 +43,7 @@
                 <label asp-for="Date"></label>
             </div>
             <div class="col-6">
-                <input asp-for="Date" class="form-control" />
+                <input asp-for="Date" class="form-control" pattern="dd.dd.dddd" value="@DateTime.Now"/>
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
         </div>

@@ -19,11 +19,9 @@ namespace SalesStatistics.Models
         [MaxLength(40)]
         public string Client { get; set; }
 
-        [Required]
-        [Range(0.0, Double.MaxValue)]
-        public double Cost { get; set; }
+        [Range(0, Int32.MaxValue)]
+        public int Cost { get; set; }
 
-        [Required]
         public DateTime Date { get; set; }
     }
 }

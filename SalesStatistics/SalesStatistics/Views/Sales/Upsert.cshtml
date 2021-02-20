@@ -43,7 +43,7 @@
                 <label asp-for="Date"></label>
             </div>
             <div class="col-6">
-                <input asp-for="Date" class="form-control" pattern="dd.dd.dddd" value="@DateTime.Now"/>
+                <input asp-for="Date" class="form-control" type="date" asp-format="{0:yyyy-MM-dd}"/>
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
         </div>

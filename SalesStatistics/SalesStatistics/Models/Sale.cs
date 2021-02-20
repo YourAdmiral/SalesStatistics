@@ -22,6 +22,7 @@ namespace SalesStatistics.Models
         [Range(0, Int32.MaxValue)]
         public int Cost { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
     }
 }

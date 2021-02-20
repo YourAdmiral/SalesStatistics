@@ -10,7 +10,7 @@ using SalesStatistics.Models;
 namespace SalesStatistics.Migrations
 {
     [DbContext(typeof(SalesDbContext))]
-    [Migration("20210220161353_AddSaleToDb")]
+    [Migration("20210220203002_AddSaleToDb")]
     partial class AddSaleToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

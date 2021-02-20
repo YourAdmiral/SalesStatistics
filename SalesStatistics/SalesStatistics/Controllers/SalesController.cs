@@ -40,6 +40,26 @@ namespace SalesStatistics.Controllers
             return View(Sale);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Upsert()
+        {
+            if (ModelState.IsValid)
+            {
+                if (Sale.Id == 0)
+                {
+                    _db.Sales.Add(Sale);
+                }
+                else
+                {
+                    _db.Sales.Update(Sale);
+                }
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(Sale);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

@@ -11,6 +11,8 @@ namespace SalesStatistics.Controllers
     public class SalesController : Controller
     {
         private readonly SalesDbContext _db;
+        [BindProperty]
+        public Sale Sale { get; set; }
 
         public SalesController(SalesDbContext db)
         {
@@ -20,6 +22,22 @@ namespace SalesStatistics.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Upsert(int? id)
+        {
+            Sale = new Sale();
+            if (id == null)
+            {
+                return View(Sale);
+            }
+
+            Sale = _db.Sales.FirstOrDefault(u => u.Id == id);
+            if (Sale == null)
+            {
+                return NotFound();
+            }
+            return View(Sale);
         }
 
         [HttpGet]

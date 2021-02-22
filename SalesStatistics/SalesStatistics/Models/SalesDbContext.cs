@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalesStatistics.Models
 {
-    public class SalesDbContext:DbContext
+    public class SalesDbContext : DbContext
     {
         public SalesDbContext(DbContextOptions<SalesDbContext> options) : base(options)
         {

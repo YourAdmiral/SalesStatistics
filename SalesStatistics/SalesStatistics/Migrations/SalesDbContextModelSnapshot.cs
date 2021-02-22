@@ -15,8 +15,8 @@ namespace SalesStatistics.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("ProductVersion", "3.1.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("SalesStatistics.Models.Sale", b =>
@@ -28,8 +28,8 @@ namespace SalesStatistics.Migrations
 
                     b.Property<string>("Client")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
 
                     b.Property<int>("Cost")
                         .HasColumnType("int");
@@ -39,8 +39,8 @@ namespace SalesStatistics.Migrations
 
                     b.Property<string>("Product")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
 
                     b.HasKey("Id");
 

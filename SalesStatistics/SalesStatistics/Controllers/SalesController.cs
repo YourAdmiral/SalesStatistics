@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SalesStatistics.Models;
 
 namespace SalesStatistics.Controllers
 {
+    [Authorize]
     public class SalesController : Controller
     {
         private readonly SalesDbContext _db;
@@ -24,6 +26,7 @@ namespace SalesStatistics.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin")]
         public IActionResult Upsert(int? id)
         {
             Sale = new Sale();
@@ -40,6 +43,7 @@ namespace SalesStatistics.Controllers
             return View(Sale);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Upsert()
@@ -66,6 +70,7 @@ namespace SalesStatistics.Controllers
             return Json(new { data = await _db.Sales.ToListAsync() });
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {

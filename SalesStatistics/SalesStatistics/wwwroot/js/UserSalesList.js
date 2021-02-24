@@ -12,25 +12,10 @@ function loadDataTable() {
             "datatype": "json"
         },
         "columns": [
-            { "data": "product", "width": "20%" },
-            { "data": "client", "width": "20%" },
-            { "data": "cost", "width": "20%" },
-            { "data": "date", "width": "20%" },
-            {
-                "data": "id",
-                "render": function (data) {
-                    return `<div class="text-center">
-                        <a href="/Sales/Upsert?id=${data}" class='btn btn-success text-white' style='cursor:pointer; width:70px;'>
-                            Edit
-                        </a>
-                        &nbsp;
-                        <a class='btn btn-danger text-white' style='cursor:pointer; width:70px;'
-                            onclick=Delete('/sales/Delete?id='+${data})>
-                            Delete
-                        </a>
-                        </div>`;
-                }, "width": "20%"
-            }
+            { "data": "product", "width": "25%" },
+            { "data": "client", "width": "25%" },
+            { "data": "cost", "width": "25%" },
+            { "data": "date", "width": "25%" }
         ],
         "language": {
             "emptyTable": "no data found"

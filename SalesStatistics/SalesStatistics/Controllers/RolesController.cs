@@ -9,7 +9,7 @@ using SalesStatistics.Models;
 
 namespace SalesStatistics.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class RolesController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
@@ -68,7 +68,7 @@ namespace SalesStatistics.Controllers
                 // получем список ролей пользователя
                 var userRoles = await _userManager.GetRolesAsync(user);
                 var allRoles = _roleManager.Roles.ToList();
-                ChangeRoleViewModel model = new ChangeRoleViewModel
+                ChangeRole model = new ChangeRole
                 {
                     UserId = user.Id,
                     UserEmail = user.Email,

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using SalesStatistics.Data;
 using SalesStatistics.Models;
 
 namespace SalesStatistics.Controllers

@@ -13,6 +13,7 @@ namespace SalesStatistics.Controllers
     public class SalesController : Controller
     {
         private readonly SalesDbContext _db;
+
         [BindProperty]
         public Sale Sale { get; set; }
 

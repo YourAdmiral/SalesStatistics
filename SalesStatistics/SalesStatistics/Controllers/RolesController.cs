@@ -12,18 +12,14 @@ namespace SalesStatistics.Controllers
     [Authorize(Roles = "admin")]
     public class RolesController : Controller
     {
-        RoleManager<IdentityRole> _roleManager;
-        UserManager<IdentityUser> _userManager;
+        private RoleManager<IdentityRole> _roleManager;
+        private UserManager<IdentityUser> _userManager;
 
         public RolesController(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
         }
-
-        public IActionResult Index() => View(_roleManager.Roles.ToList());
-
-        public IActionResult Create() => View();
 
         [HttpPost]
         public async Task<IActionResult> Create(string name)
@@ -43,6 +39,7 @@ namespace SalesStatistics.Controllers
                     }
                 }
             }
+
             return View(name);
         }
 
@@ -57,17 +54,14 @@ namespace SalesStatistics.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult UserList() => View(_userManager.Users.ToList());
-
         public async Task<IActionResult> Edit(string userId)
         {
-            // получаем пользователя
             IdentityUser user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
-                // получем список ролей пользователя
                 var userRoles = await _userManager.GetRolesAsync(user);
                 var allRoles = _roleManager.Roles.ToList();
+
                 ChangeRole model = new ChangeRole
                 {
                     UserId = user.Id,
@@ -75,6 +69,7 @@ namespace SalesStatistics.Controllers
                     UserRoles = userRoles,
                     AllRoles = allRoles
                 };
+
                 return View(model);
             }
 
@@ -84,7 +79,6 @@ namespace SalesStatistics.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(string userId, List<string> roles)
         {
-            // получаем пользователя
             IdentityUser user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
@@ -94,7 +88,6 @@ namespace SalesStatistics.Controllers
                 var removedRoles = userRoles.Except(roles);
 
                 await _userManager.AddToRolesAsync(user, addedRoles);
-
                 await _userManager.RemoveFromRolesAsync(user, removedRoles);
 
                 return RedirectToAction("UserList");
@@ -102,5 +95,11 @@ namespace SalesStatistics.Controllers
 
             return NotFound();
         }
+
+        public IActionResult Index() => View(_roleManager.Roles.ToList());
+
+        public IActionResult Create() => View();
+
+        public IActionResult UserList() => View(_userManager.Users.ToList());
     }
 }
